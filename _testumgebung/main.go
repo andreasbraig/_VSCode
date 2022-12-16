@@ -4,14 +4,14 @@ import (
 	"fmt"
 )
 
-//func Primedivide(n int) []int {
+func Primedivide(n int) []int {
 
-	//var primelist1 []int 
+	var primelist1 []int 
 
-	//primelist1 = Primelist(n)
+	primelist1 = Primelist(n)
 
 
-//}
+}
 
 func Primelist(n int) []int { //Funktion die eine Liste der Primzahlen bis n erstellt.
 
