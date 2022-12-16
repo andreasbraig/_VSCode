@@ -4,6 +4,9 @@ package main
 // Das Quadrat soll mit Hilfe des Zeichens "*" gezeichnet werden.
 func PrintSquare(n int) {
 	// TODO
+
+	
+
 }
 
 // Erwartet eine Zahl n und gibt ein Quadrat der Seitenlänge n auf die Konsole aus.
