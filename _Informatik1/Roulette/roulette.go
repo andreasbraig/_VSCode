@@ -8,13 +8,23 @@ import (
 
 func ReadNumber(msg string) int {
 
-	//spieler wählt eine Zahl
-	fmt.Print(msg)
-
 	var input int
-	fmt.Scanln(&input)
 
-	return input
+	//Programm überprüft, ob die Eingabe den Parametern entspricht
+	for i := 0; i < 10; i++ { //Falls die Eingegebene Zahl nicht Stimmt, wird die Abfrage erneut durchgeführt
+
+		fmt.Print(msg)
+		//spieler wählt eine Zahl
+		fmt.Scanln(&input)
+
+		if input >= 0 && input <= 36 { //Abfrage
+			return input
+		}
+		fmt.Println("Die Zahl war Ungültig!")
+
+	}
+	fmt.Println("Idiot!")
+	return 37
 
 }
 
