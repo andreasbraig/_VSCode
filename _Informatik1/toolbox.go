@@ -1,0 +1,16 @@
+package main
+
+import (
+	"fmt"
+)
+
+func import_Int(msg string) int {
+
+	var input int
+
+	fmt.Print(msg)
+	fmt.Scanln(&input)
+	fmt.Println("Sie haben", input, "eingegeben.")
+
+	return input
+}

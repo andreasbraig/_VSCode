@@ -6,6 +6,8 @@ import (
 
 func main() {
 
-	fmt.Println("Hello World")
+	test := import_Int("Bitte geben sie eine Zahl ein ")
+
+	fmt.Println(test)
 
 }
