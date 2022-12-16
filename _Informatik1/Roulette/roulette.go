@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 func ReadNumber(msg string) int {
@@ -32,11 +34,24 @@ func PlayerWins(playerNumber, wheelNumber int) bool {
 // Braucht dazu die gewählte Zahl und die Zahl, die gedreht wurde
 func PrintResult(playerNumber, wheelNumber int) {
 
+	fmt.Println("Es wurde", wheelNumber, "Gedreht")
+
 	if PlayerWins(playerNumber, wheelNumber) { //Prüft ob der wert PlayerWins True oder false ist
 		fmt.Println("Sie haben Gewonnen!")
 	} else {
 		fmt.Println("Sie haben leider verloren.")
 	}
+}
+
+// dreht das roulette Rad
+func SpinWheel() int {
+
+	rand.Seed(time.Now().UnixNano())
+
+	var number int = rand.Intn(37)
+
+	return number
+
 }
 
 func main() {
@@ -46,8 +61,7 @@ func main() {
 	var input int = ReadNumber("Bitte geben sie eine Zahl zwischen 0 und 36 ein: ")
 
 	//Am Rad drehen
-
-	var result int = 13
+	var result int = SpinWheel()
 
 	// Auswerten ob spieler gewonnen hat
 
