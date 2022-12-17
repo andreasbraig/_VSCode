@@ -13,13 +13,16 @@ func Divides(m, n int) bool {
 	//
 	// Als Übungsaufgabe ersetzen Sie diese Lösung dennoch durch eine,
 	// die den Modulo-Operator nicht verwendet.
-	var result int
+	if m == 0 {
+		return false
+	}
 
-	result = m / n
+	var result int = n / m
 
-	if result*n == m {
+	if result*m == n {
 		return true
 	}
+	
 	return false
 	// Erläuterung:
 	// Der Modulo-Operator % liefert den Rest der ganzzahligen Division n/m.
@@ -30,10 +33,10 @@ func Divides(m, n int) bool {
 // Liefert true, falls n eine Primzahl ist.
 func IsPrime(n int) bool {
 	// TODO
-	if n <= 1 {  //Alle Zahlen kleiner gleich 1 sind keine Primzahlen und müssen nicht weiter überprüft werden
+	if n <= 1 { //Alle Zahlen kleiner gleich 1 sind keine Primzahlen und müssen nicht weiter überprüft werden
 		return false
 	} else {
-		for i := 2; i < n; i++ { //for schleife, die mögliche Weitere Teiler größer 1 Probiert 
+		for i := 2; i < n; i++ { //for schleife, die mögliche Weitere Teiler größer 1 Probiert
 			if n%i == 0 { //Sobald ein Teiler gefunden wurde, ist es keine Primzahl
 				return false
 			}
@@ -48,12 +51,11 @@ func IsPrime(n int) bool {
 // Gibt alle Primzahlen auf der Konsole aus, die kleiner als n sind.
 func PrintPrimes(n int) {
 	// TODO
-	for i := 2; i < n; i ++ {
+	for i := 2; i < n; i++ {
 		if IsPrime(i) {
 			fmt.Println(i)
 		}
 	}
-
 
 }
 
@@ -63,14 +65,14 @@ func PrintPrimes(n int) {
 func NextPrime(n int) int {
 	// TODO
 	for IsPrime(n) == false {
-	if IsPrime(n){
-		return n
-	}else {
-		n ++
+		if IsPrime(n) {
+			return n
+		} else {
+			n++
+		}
 	}
-}
-return n
-		
+	return n
+
 }
 
 // Erwartet eine Zahl n.
@@ -91,9 +93,9 @@ func GreatestPrimeBelow(n int) int {
 	// TODO
 	for IsPrime(n) == false {
 		n--
-		if IsPrime(n){
+		if IsPrime(n) {
 			return n
-		}else {
+		} else {
 		}
 	}
 	return 0

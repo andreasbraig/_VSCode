@@ -1,11 +1,18 @@
 package main
 
+import "strings"
+
 func main() {}
 
 // Erwartet einen String s und einen Buchstaben c.
 // Prüft, ob c in s vorkommt.
 func Contains(s string, c byte) bool {
 	// TODO
+	for i := 0; i < len(s); i++ { // schleife läuft über die länge von s
+		if s[i] == c { //sobald Buchstabe c in s an stelle i gefunden wurde return true
+			return true
+		}
+	}
 	return false
 }
 
@@ -13,8 +20,12 @@ func Contains(s string, c byte) bool {
 // Zählt, wie oft c in s vorkommt.
 func CountChar(s string, c byte) int {
 	count := 0
-	// TODO
-	return count
+	for i := 0; i < len(s); i++ { // schleife läuft über die länge von s
+		if s[i] == c { //sobald Buchstabe c in s an stelle i gefunden wurde Zähle den counter um eins hoch
+			count++
+		}
+	}
+	return count //übergebe den Counter zurück
 }
 
 // Erwartet einen String s und einen Buchstaben c.
@@ -22,14 +33,19 @@ func CountChar(s string, c byte) int {
 // Liefert die Länge von s, falls c nicht in s vorkommt.
 // Kommt c mehrfach vor, soll die erste Position geliefert werden.
 func PositionOf(s string, c byte) int {
-	// TODO
+
+	for i := 0; i < len(s); i++ {
+		if s[i] == c {
+			return i
+		}
+	}
 	return len(s)
 }
 
 // Erwartet zwei Strings s und t und prüft, ob t in s als Teilstring vorkommt.
 func ContainsSubstring(s, t string) bool {
-	// TODO
-	return false
+
+	return strings.Contains(s,t)
 }
 
 // Erwartet einen String und prüft, ob er korrekte Klammerpaare enthält.
@@ -40,9 +56,21 @@ func ContainsSubstring(s, t string) bool {
 // passende öffnende Klammer gegeben hat.
 // Die Funktion soll true liefern, falls der String korrekt geklammert ist.
 func CheckParentheses(s string) bool {
-	counter := 0
+	counteropen := 0
+	counterclose := 0
 	// TODO
-	return counter == 0
+	for i := 0; i < len(s); i++ { // schleife läuft über die länge von s
+		if s[i] == '(' { //sobald Klammer auf in s an stelle i gefunden wurde counter steigt
+			counteropen++
+		}
+	}
+
+	for i := 0; i < len(s); i++ { // schleife läuft über die länge von s
+		if s[i] == ')' { //sobald Klammer zu in s an stelle i gefunden wurde counter steigt
+			counterclose++
+		}
+	}
+	return counteropen == counterclose //vergleiche anzahl der Offnenen mit geschlossenen Klammern, wenn gleich bedingung erfüllt
 }
 
 // Erwartet zwei Strings s und sep sowie eine Zahl n.
@@ -50,6 +78,10 @@ func CheckParentheses(s string) bool {
 func ConcatN(s, sep string, n int) string {
 	result := ""
 	// TODO
+	for i := 1; i < n; i++ {
+		result = result+s+sep
+	}
+
 	return result + s
 }
 
@@ -59,5 +91,10 @@ func ConcatN(s, sep string, n int) string {
 func Zip(s1, s2 string) string {
 	result := ""
 	// TODO
+
+	for i := 0; i < len(s2); i++ {
+
+		result = result+string(s1[i])+string(s2[i])
+	}
 	return result
 }
