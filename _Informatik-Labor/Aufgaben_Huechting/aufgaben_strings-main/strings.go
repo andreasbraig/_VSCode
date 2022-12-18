@@ -1,6 +1,8 @@
 package main
 
-import "strings"
+import (
+	"strings"
+)
 
 func main() {}
 
@@ -45,7 +47,7 @@ func PositionOf(s string, c byte) int {
 // Erwartet zwei Strings s und t und prüft, ob t in s als Teilstring vorkommt.
 func ContainsSubstring(s, t string) bool {
 
-	return strings.Contains(s,t)
+	return strings.Contains(s, t)
 }
 
 // Erwartet einen String und prüft, ob er korrekte Klammerpaare enthält.
@@ -79,7 +81,7 @@ func ConcatN(s, sep string, n int) string {
 	result := ""
 	// TODO
 	for i := 1; i < n; i++ {
-		result = result+s+sep
+		result = result + s + sep
 	}
 
 	return result + s
@@ -92,9 +94,27 @@ func Zip(s1, s2 string) string {
 	result := ""
 	// TODO
 
-	for i := 0; i < len(s2); i++ {
+	// Prüfung welcher der Strings der längere ist
+	var max int
+	if len(s1) > len(s2) {
+		max = len(s1)
+	} else {
+		max = len(s2)
+	}
 
-		result = result+string(s1[i])+string(s2[i])
+	//Zusammenbau der Strings zu einem String
+	for i := 0; i < max; i++ {
+
+		//Abfrage ob einer der Strings schon zu ende ist
+		if i > len(s1)-1 {
+			result = result + string(s2[i])
+		} else if i > len(s2)-1 {
+			result = result + string(s1[i])
+		} else {
+			result = result + string(s1[i]) + string(s2[i])
+		}
+
 	}
 	return result
+
 }
