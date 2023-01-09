@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func Listen() {
 	l1 := []int{13, 2, 4, 25, 4, 12, 2, -3, 15, 25, 13, 4, 75, 42, 2, 4, 13, 10, 4, 17, 38}
@@ -18,6 +21,9 @@ func Listen() {
 
 		count++
 
+		fmt.Println(element)
+
+		
 	}
 
 	fmt.Println(len(l1))
@@ -34,7 +40,7 @@ func Calc() bool{
 
 func main() {
 
-	fmt.Println(Calc())
+	fmt.Println(strings.ToLower("AHABDB"))
 
 
 }

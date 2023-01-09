@@ -62,7 +62,7 @@ func ExampleIsReverse() {
 	// true
 	// true
 	// false
-	// false
+	// false 
 }
 
 func ExampleIsPalindrome() {
