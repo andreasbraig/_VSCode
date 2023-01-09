@@ -5,5 +5,12 @@ package suchen
 // Liefert -1, falls keine negative Zahl enthalten ist.
 func FindNegative(list []int) int {
 	// TODO
+
+	for idx, element := range list {
+		if element < 0 {
+			return idx
+		}
+	}
+
 	return -1
 }

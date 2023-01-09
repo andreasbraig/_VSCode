@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func Listen() {
@@ -40,7 +39,30 @@ func Calc() bool{
 
 func main() {
 
-	fmt.Println(strings.ToLower("AHABDB"))
+	l1 := []int{1, 4, 5, 6, 7, 9, 5}
+
+	fmt.Println(ContainsChain(l1))
+
+}
 
 
+func ContainsChain(list []int) bool {
+	// TODO
+
+	x := 0
+
+	for _, element := range list[:len(list)-1]  {
+
+		fmt.Println(element)
+		fmt.Println(element + 1)
+
+		if element == x && element + 1 == x + 1 {
+			return true 
+		}
+
+		x++
+
+	}
+
+	return false
 }

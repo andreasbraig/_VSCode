@@ -5,5 +5,12 @@ package suchen
 // Liefert -1, falls x nicht enthalten ist.
 func Find(list []int, x int) int {
 	// TODO
+
+	for idx, element := range list {
+		if element == x {
+			return idx
+		}
+	}
+
 	return -1
 }
