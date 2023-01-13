@@ -48,6 +48,7 @@ func PositionOf(s string, c byte) int {
 func ContainsSubstring(s, t string) bool {
 
 	return strings.Contains(s, t)
+
 }
 
 // Erwartet einen String und prüft, ob er korrekte Klammerpaare enthält.
