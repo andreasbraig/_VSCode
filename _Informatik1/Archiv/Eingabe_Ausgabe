@@ -13,4 +13,5 @@ func import_Int(msg string) int {
 	fmt.Println("Sie haben", input, "eingegeben.")
 
 	return input
+
 }
