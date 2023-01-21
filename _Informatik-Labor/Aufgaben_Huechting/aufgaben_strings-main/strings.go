@@ -91,7 +91,7 @@ func ConcatN(s, sep string, n int) string {
 // Erwartet zwei strings s1 und s2.
 // Liefert einen String, der abwechselnd aus den Buchstaben des einen und des anderen
 // Strings besteht.
-func Zip(s1, s2 string) string {
+func Zip1(s1, s2 string) string {
 	result := ""
 	// TODO
 
@@ -118,4 +118,16 @@ func Zip(s1, s2 string) string {
 	}
 	return result
 
+}
+
+func Zip(s1,s2 string) string {
+	result := " "
+	for i := 0; i < len(s1) || i < len(s2); i++ {
+		if i < len(s1) {
+			result += string(s1[i])
+		}else if i < len(s2) {
+			result += string(s2[i])
+		}
+	}
+	return result
 }

@@ -4,8 +4,13 @@ import "fmt"
 
 func main() {
 
-	Beispielstring := "Hallo Lucas"
+	board := [][]string{
+		{"X", "O", "X"},
+		{"X", "O", "O"},
+		{"X", "O", "X"},
+	}
 
-	fmt.Println(string(Beispielstring[1]))
+	fmt.Println(board[0][1])
 
+	fmt.Println(len(board))
 }
