@@ -7,4 +7,8 @@ Theoretisch ist das spielfeld skalierbar.
 Jede Funktion ist relativ geschrieben, so das die Größe des Feldes im Programm berechnet wird
 Der Beginn eines Eastereggs ist gesetzt.
 
+//2023-01-22: Bugfix: 
+Bei falschem zug wurde der spieler gewechselt. Dies wurde behoben
+Die spieler werden jetzt angesprochen zu spielen. 
+
 ©Andreas Braig
