@@ -7,11 +7,11 @@ import (
 
 //Fragt den Player nach seinem Feld
 
-func AskPlayer( /*board [][]string*/ ) (rune, int /*[][]string*/) {
+func AskPlayer(player string /*board [][]string*/) (rune, int /*[][]string*/) {
 
 	input := " "
 
-	fmt.Println("Bitte geben sie eine Koordinate ein:")
+	fmt.Println(player, ",bitte geben sie eine Koordinate ein:")
 	fmt.Scanln(&input)
 	rune, number := SplitInput(input)
 
@@ -52,24 +52,16 @@ func SplitInput(input string) (rune, int) {
 	return r, num
 }
 
-//Erwartet einen User input der Konsole
-//Überprüft ob der Input für TicTacToe Geeignet ist (Ob es ein "X" oder ein "O" ist )
-
-func CheckSymbolInput(symbol string) bool {
-
-	return symbol == "X" || symbol == "O"
-
-}
-
 //Überprüft die eingegebenen Koordinaten ob sie innerhalb des spielfeld liegen
 
-func CheckFieldInput(RowRune rune, fieldNum, maxRows int) bool {
+func CheckFieldInput(row, fieldNum, maxRows int) bool {
 
-	bool1 := maxRows < GetRow(rune(RowRune)) || GetRow(rune(RowRune)) < 0
+	bool1 := maxRows-1 < row || row < 0
 
 	bool2 := fieldNum > maxRows || fieldNum < 0
 
 	return bool1 || bool2
+
 }
 
 //Liefert false solange ein feld noch ungenutzt ist
@@ -98,9 +90,9 @@ func GetRow(rowNum rune) int {
 
 func GetExactField(RowRune rune, ColNum, maxRows int) (bool, int, int) {
 
-	err := CheckFieldInput(RowRune, ColNum, maxRows)
-
 	row := GetRow(RowRune)
+
+	err := CheckFieldInput(row, ColNum, maxRows)
 
 	field := ColNum - 1
 

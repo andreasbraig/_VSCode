@@ -25,6 +25,7 @@ func TicTacToe() {
 	Duce := false // zum spielbeginn kann kein Unentschieden vorliegen
 	run := true   // Zum spielbeginn läuft das spiel (Dies ist die oberste abbruchbedingung des Programms)
 	counter := 0  //Der Rundenzähler wird auf 0 gesetzt.
+	player := " "
 
 	//Vorbereitung des Spielfeldes
 
@@ -36,15 +37,13 @@ func TicTacToe() {
 
 		for !win && !Duce {
 
-			symbol = PlayerTurn(counter) // Legt fest, welcher spieler grade am zug ist.
+			symbol, player = PlayerTurn(counter) // Legt fest, welcher spieler grade am zug ist.
 
-			board = GameMove(symbol, board) // Führt den spielzug durch
+			board, counter = GameMove(symbol, player, board, counter) // Führt den spielzug durch
 
 			win = spielfeld.PlayerWins(board, symbol) // Überprüft ob ein gewinn vorliegt
 
 			Duce = spielfeld.Duce(board) // Prüft ob ein Unentschieden vorliegt.
-
-			counter++
 
 		}
 
@@ -86,9 +85,9 @@ func TicTacToe() {
 // Erwartet das aktuelle spielfeld
 // führt einen spielzug durch und übergibt die neue Liste und das eingefügte Symbol
 
-func GameMove(symbol string, board [][]string) [][]string {
+func GameMove(symbol, player string, board [][]string, counter int) ([][]string, int) {
 
-	RowRune, ColNum := input.AskPlayer()
+	RowRune, ColNum := input.AskPlayer(player)
 
 	err, idx, idy := input.GetExactField(RowRune, ColNum, len(board))
 
@@ -99,25 +98,27 @@ func GameMove(symbol string, board [][]string) [][]string {
 			board[idx][idy] = symbol       // Eintrag in das spielfeld
 			output.DisplayGameboard(board) // Spielfeld darstellen
 
-			return board
+			counter += 1
+
+			return board, counter
 		}
 	}
 
 	output.DisplayGameboard(board)
 	fmt.Println("Bitte korrekten wert angeben.")
 
-	return board
+	return board, counter
 
 }
 
 //Erwartet die aktuelle Rundenzahl
 //Übergibt das symbol des spielers, der dran ist.
 
-func PlayerTurn(n int) string {
+func PlayerTurn(n int) (string, string) {
 	if n%2 == 0 {
-		return "X"
+		return "X", "Spieler 1"
 	} else {
-		return "O"
+		return "O", "Spieler 2"
 	}
 
 }
