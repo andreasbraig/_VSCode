@@ -1,48 +1,26 @@
 package uts
 
 import (
-	"TicTacToe/output"
 	"fmt"
+	"strings"
 )
 
-// erwartet ein spielfeld
-// Stellt den aktuellen stand des spieles dar
+// Soll den spieler fragen, ob er noch eine runde spielen möchte.
+//Gibt das in form eines Bools zurück
 
-func DisplayGameboard(board [][]string) {
-	fmt.Println("Dies ist das aktuelle spielfeld:")
-	output.PrintCorrectly(board)
-}
-
-// Erwartet den spieler der gewonnen hat
-// Stellt den Gewinn bildschirm dar
-
-func DisplayWin(symbol string) {
-			fmt.Println()
-			fmt.Println()
-			fmt.Println()
-			fmt.Println(symbol, "hat gewonnen!")
-			fmt.Println()
-			fmt.Println()
-			fmt.Println()
-		
-}
-
-// Soll den spieler fragen, ob er noch eine runde spielen möchte. 
-
-func AskforNewRound() bool{
+func AskforNewRound() bool {
 
 	var input string
 
 	fmt.Println("möchten Sie erneut spielen? Y/N")
-			fmt.Scanln(&input)
+	fmt.Scanln(&input)
 
-			if input == "Y" {
-				fmt.Println("Die neue Runde startet...")
-				return true 
-			}
-			
-			
-			fmt.Println("Danke, dass sie TicTacToe by Andreas Braig gespielt haben!")
-			return false
+	if strings.ToUpper(input) == "Y" { //abfrage nach neuer runde unabhängig der Groß und kleinschreibung
+		fmt.Println("Die neue Runde startet...")
+		return true
+	}
+
+	fmt.Println("Danke, dass sie TicTacToe by Andreas Braig gespielt haben!")
+	return false
 
 }

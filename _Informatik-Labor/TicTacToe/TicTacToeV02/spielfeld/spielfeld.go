@@ -1,5 +1,10 @@
 package spielfeld
 
+import (
+	"TicTacToe/output"
+	"fmt"
+)
+
 //Funktion muss mit einem Großbuichstaben anfangen, damit sie exportiert werden.
 
 // Tic Tac Toe Spielfeld in der Konsole programmieren
@@ -75,7 +80,7 @@ func LeftCrossFull(board [][]string, symbol string) bool {
 
 }
 
-// Liefert true, falls das spielfeld ein Diagonalen gewinn hat 
+// Liefert true, falls das spielfeld ein Diagonalen gewinn hat
 func RightCrossFull(board [][]string, symbol string) bool {
 
 	x := len(board) - 1
@@ -89,7 +94,7 @@ func RightCrossFull(board [][]string, symbol string) bool {
 
 }
 
-// Überpruft, ob einer der möglichen gewinnfälle eingetreten ist. 
+// Überpruft, ob einer der möglichen gewinnfälle eingetreten ist.
 
 func PlayerWins(board [][]string, symbol string) bool {
 
@@ -105,7 +110,29 @@ func PlayerWins(board [][]string, symbol string) bool {
 	return false
 }
 
-//Erwartet das spielfeld. Leert das spielfeld vollständig 
+//Erwartet das spielfeld
+//Überprüft ob das spielfeld voll ist und ein unentschieden herscht.
+
+func Duce(board [][]string) bool {
+
+	counter := 0
+
+	for _, element := range board {
+		for _, character := range element {
+
+			if character == "X" || character == "O" {
+
+				counter++
+
+			}
+		}
+	}
+
+	return counter == len(board)*len(board[0])
+
+}
+
+//Erwartet das spielfeld. Leert das spielfeld vollständig
 
 func ClearBoard(board [][]string) [][]string {
 
@@ -117,4 +144,24 @@ func ClearBoard(board [][]string) [][]string {
 
 	return board
 
+}
+
+//Beginnt ein neues spiel indem es das alte Board löscht und Das spielgeschehen erklärt
+
+func PrepareBoard(board [][]string) [][]string {
+
+	Demoboard := [][]string{
+		{" ", "1", "2", "3"},
+		{"A", " ", " ", " "},
+		{"B", " ", " ", " "},
+		{"C", " ", " ", " "},
+	}
+
+	fmt.Println("______________________________________________________________")
+	fmt.Println()
+	fmt.Println("Dies ist die Nummerierung der spielfelder:")
+	fmt.Println("Die eingabe der Felder erfolgt in Koordinaten: z.B. A1 oder C3")
+	output.PrintCorrectly(Demoboard)
+
+	return ClearBoard(board)
 }

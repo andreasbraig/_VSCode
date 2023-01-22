@@ -4,9 +4,11 @@ import "fmt"
 
 func main() {
 
-	fmt.Println(3%3)
-	fmt.Println(3%3)
-	fmt.Println(3%3)
-
+	fmt.Println('0')
 
 }
+
+
+
+
+//GEHT NIX

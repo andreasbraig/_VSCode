@@ -8,16 +8,10 @@ import (
 	"fmt"
 )
 
+// Hier passiert TicTacToe
 func TicTacToe() {
 
-	//Einführung der Variablen
-
 	// Definiert ein spielfeld
-	Demoboard := [][]string{
-		{"1", "2", "3"},
-		{"4", "5", "6"},
-		{"7", "8", "9"},
-	}
 
 	board := [][]string{
 		{"1", "2", "3"},
@@ -27,45 +21,62 @@ func TicTacToe() {
 
 	symbol := "Q"
 
-	win := false
-	end := true
+	win := false  //Zum spielgewinn hat keiner gewonnen
+	Duce := false // zum spielbeginn kann kein Unentschieden vorliegen
+	run := true   // Zum spielbeginn läuft das spiel (Dies ist die oberste abbruchbedingung des Programms)
+	counter := 0  //Der Rundenzähler wird auf 0 gesetzt.
 
-	fmt.Println("Dies ist die Nummerierung der spielfelder:")
-	output.PrintCorrectly(Demoboard)
+	//Vorbereitung des Spielfeldes
 
-	// Leert das spielfeld
-	board = spielfeld.ClearBoard(board)
+	spielfeld.PrepareBoard(board)
 
-	// Schleife, die das geschehen des spiels durchführt, bis gewinn vorliegt
+	// Schleife, die das geschehen des spiels durchführt, bis das Spiel händisch beendet werden soll.
 
-	for end {
+	for run {
 
-		for !win {
+		for !win && !Duce {
 
-			symbol, board = GameMove(board) // Führt den spielzug durch
+			symbol = PlayerTurn(counter) // Legt fest, welcher spieler grade am zug ist.
+
+			board = GameMove(symbol, board) // Führt den spielzug durch
 
 			win = spielfeld.PlayerWins(board, symbol) // Überprüft ob ein gewinn vorliegt
 
+			Duce = spielfeld.Duce(board) // Prüft ob ein Unentschieden vorliegt.
+
+			counter++
+
 		}
 
-		output.PrintCorrectly(board) //Stellt das aktuelle Spielfeld dar
+		output.PrintCorrectly(board) //Stellt das aktuelle Spielfeld ein letztes mal dar
 
 		if win {
-			win = false 
+			win = false
+			counter = 0
 
-			uts.DisplayWin(symbol) // Zeigt den Gewinn Bildschirm
+			output.DisplayWin(symbol) // Zeigt den Gewinn Bildschirm
 
-			end = uts.AskforNewRound() // Erfragt Revance
+			run = uts.AskforNewRound() // Erfragt Revance
 
-			if end {
+			if run {
 
-				board = spielfeld.ClearBoard(board)
-
-				fmt.Println("Dies ist die Nummerierung der spielfelder:")
-				output.PrintCorrectly(Demoboard)
+				spielfeld.PrepareBoard(board)
 
 			}
 
+		} else if Duce {
+			Duce = false
+			counter = 0
+
+			output.DisplayDuce() // Zeigt den Unentschieden Bildschirm
+
+			run = uts.AskforNewRound() // Erfragt Revance
+
+			if run {
+
+				spielfeld.PrepareBoard(board)
+
+			}
 		}
 
 	}
@@ -75,26 +86,38 @@ func TicTacToe() {
 // Erwartet das aktuelle spielfeld
 // führt einen spielzug durch und übergibt die neue Liste und das eingefügte Symbol
 
-func GameMove(board [][]string) (string, [][]string) {
+func GameMove(symbol string, board [][]string) [][]string {
 
-	fieldNum, symbol := input.AskPlayer()
+	RowRune, ColNum := input.AskPlayer()
 
-	err, idx, idy := input.GetExactField(fieldNum, len(board))
+	err, idx, idy := input.GetExactField(RowRune, ColNum, len(board))
 
-	if err { // Solange kein falsches Feld oder buchstabe angebeben wurde 
+	if !err { // Solange kein falsches Feld oder buchstabe angebeben wurde
 
-		if !input.CheckIsInUse(idx,idy,board){ //Solange der input nicht belegt ist 
+		if !input.CheckIsInUse(idx, idy, board) { //Solange der input nicht belegt ist
 
-			board[idx][idy] = symbol // Eintrag in das spielfeld
-			uts.DisplayGameboard(board) // Spielfeld darstellen
+			board[idx][idy] = symbol       // Eintrag in das spielfeld
+			output.DisplayGameboard(board) // Spielfeld darstellen
 
-			return symbol, board
+			return board
 		}
 	}
 
-	uts.DisplayGameboard(board)
-	fmt.Println("Bitte korrekten wert angeben.") 
+	output.DisplayGameboard(board)
+	fmt.Println("Bitte korrekten wert angeben.")
 
-	return symbol, board
+	return board
+
+}
+
+//Erwartet die aktuelle Rundenzahl
+//Übergibt das symbol des spielers, der dran ist.
+
+func PlayerTurn(n int) string {
+	if n%2 == 0 {
+		return "X"
+	} else {
+		return "O"
+	}
 
 }

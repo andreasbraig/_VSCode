@@ -156,3 +156,16 @@ func ExampleRightCrossFull() {
 	//true
 
 }
+
+func ExampleDuce() {
+	board := [][]string{
+		{"O", "X", "X"},
+		{"X", "X", "X"},
+		{"X", "O", "O"},
+	}
+
+	fmt.Println(Duce(board))
+
+	//Output:
+	//true
+}
