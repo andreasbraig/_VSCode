@@ -2,7 +2,7 @@ package input
 
 import "fmt"
 
-func AskPlayer() (int,string) {
+func AskPlayer() (int, string) {
 
 	fieldNumber := 0
 	Symbol := ""
@@ -18,7 +18,7 @@ func AskPlayer() (int,string) {
 		return fieldNumber, Symbol
 	}
 
-	return -1,Symbol
+	return -1, Symbol
 
 }
 
@@ -39,6 +39,19 @@ func CheckFieldInput(fieldNum, fieldLength int) bool {
 
 	return true
 
+}
+
+//Liefert false solange ein feld noch ungenutzt ist
+
+func CheckIsInUse(idx, idy int, board [][]string) bool {
+
+	if board[idx][idy] == "X" || board[idx][idy] == "O" {
+
+		return true
+
+	}
+
+	return false
 }
 
 // Erwartet eine Feldnummer und eine breite des spielfelds
