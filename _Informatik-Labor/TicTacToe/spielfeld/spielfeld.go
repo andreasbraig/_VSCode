@@ -1,5 +1,7 @@
 package spielfeld
 
+//Funktion muss mit einem Großbuichstaben anfangen, damit sie exportiert werden.
+
 // Tic Tac Toe Spielfeld in der Konsole programmieren
 
 // Überprüft ob eine Reihe vollständig mit dem Symbol gefüllt ist
@@ -73,6 +75,7 @@ func LeftCrossFull(board [][]string, symbol string) bool {
 
 }
 
+// Liefert true, falls das spielfeld ein Diagonalen gewinn hat 
 func RightCrossFull(board [][]string, symbol string) bool {
 
 	x := len(board) - 1
@@ -86,7 +89,10 @@ func RightCrossFull(board [][]string, symbol string) bool {
 
 }
 
-func playerWins(board [][]string, symbol string) bool {
+// Überpruft, ob einer der möglichen gewinnfälle eingetreten ist. 
+
+func PlayerWins(board [][]string, symbol string) bool {
+
 	if AnyRowFull(board, symbol) {
 		return true
 	} else if AnyColumnFull(board, symbol) {
@@ -98,6 +104,8 @@ func playerWins(board [][]string, symbol string) bool {
 	}
 	return false
 }
+
+//Erwartet das spielfeld. Leert das spielfeld vollständig 
 
 func ClearBoard(board [][]string) [][]string {
 
