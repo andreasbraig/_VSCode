@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {}
 
@@ -22,7 +24,7 @@ func Divides(m, n int) bool {
 	if result*m == n {
 		return true
 	}
-	
+
 	return false
 	// Erläuterung:
 	// Der Modulo-Operator % liefert den Rest der ganzzahligen Division n/m.
@@ -82,8 +84,12 @@ func NextPrime(n int) int {
 // * k ist eine Primzahl
 // * k + 2 ist eine Primzahl
 func NextPrimeTwin(n int) int {
+
+	for n = NextPrime(n); !IsPrime(n+2); n = NextPrime(n+1) {		
+
+	}
+	return n
 	// TODO
-	return 0
 }
 
 // Erwartet eine Zahl n.
@@ -91,7 +97,7 @@ func NextPrimeTwin(n int) int {
 // Falls es keine solche Zahl gibt, wird 0 geliefert.
 func GreatestPrimeBelow(n int) int {
 	// TODO
-	for IsPrime(n) == false {
+	for !IsPrime(n){
 		n--
 		if IsPrime(n) {
 			return n
