@@ -5,13 +5,7 @@ import "strings"
 // Erwartet einen string s und zählt, wie oft der Buchstabe 'A' in s vorkommt.
 func CountA(s string) int {
 	// ANMERKUNG: Diese Funktion ist ein Beispiel, hier ist (noch) nichts zu tun.
-	result := 0
-	for _, char := range s {
-		if char == 'A' {
-			result++
-		}
-	}
-	return result
+	return CountChar(s,'A')
 }
 
 // Erwartet einen string s und einen Buchstaben c.
