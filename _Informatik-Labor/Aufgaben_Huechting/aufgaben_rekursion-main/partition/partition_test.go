@@ -13,5 +13,3 @@ func ExamplePartition() {
 	// [10 3 5]
 	// [17 23 12]
 }
-
-func ExampleSort()
