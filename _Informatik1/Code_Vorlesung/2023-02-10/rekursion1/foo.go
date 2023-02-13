@@ -11,15 +11,15 @@ func Foo(n int) {
 	fmt.Println(n)
 }
 
-func RecursiveAddition(m,n int) int{
+func RecursiveAddition(m, n int) int {
 	if n == 0 {
 		return m
 	}
 	return 1 + RecursiveAddition(m, n-1)
 }
 
+func main() {
 
+	fmt.Println(2, 3)
 
-func main(){
-	fmt.Println(RecursiveAddition(3,2))
 }
