@@ -5,9 +5,9 @@ package dreieckszahlen
 func Dreieck(n int) int {
 	// TODO
 
-	if n <= 1 {
-		return 1
-	} 
+	if n == 1{
+		return 1 
+	}
 
 	return n + Dreieck(n-1)
 }

@@ -6,11 +6,6 @@ import "github.com/tel22a-inf/aufgaben_rekursion_2/rechnen/binomialkoeffizienten
 // Für die konkreten Zahlenwerte: siehe Tests.
 func Tetraeder(n int) int {
 	// TODO
-
-	if n == 1 {
-		return 1
-	}
-
 	return binomialkoeffizienten.BinomialCoefficient(n+2, 3)
 }
 
