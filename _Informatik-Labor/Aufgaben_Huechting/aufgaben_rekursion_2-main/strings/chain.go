@@ -8,7 +8,12 @@ func Chain(s string, n int) string {
 	// Hinweis:
 	// Unterscheiden Sie zwei Fälle:
 	// 1. n == 0 - Dann ist nichts zu tun.
+
+	if n == 0{
+		return ""
+	}
+
 	// 2. n != 0 - Dann berechnen Sie die Chain für n-1 und hängen s noch einmal an.
 
-	return ""
+	return s + Chain(s,n-1)
 }

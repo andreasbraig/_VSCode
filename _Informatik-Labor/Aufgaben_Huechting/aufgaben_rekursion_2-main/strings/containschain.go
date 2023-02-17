@@ -7,5 +7,5 @@ func ContainsChain(s, symbol string, count int) bool {
 
 	// Hinweis:
 	// Führen Sie ContainsChain auf Contains zurück
-	return false
+	return Contains(s,Chain(symbol,count))
 }

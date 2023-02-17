@@ -39,3 +39,4 @@ func BinSearch(list []int, key int) int {
 	return result
 
 }
+
