@@ -2,16 +2,16 @@ package hanoi
 
 func ExampleBewegePlatte() {
 
-	BewegePlatte("A", "C")
+	BewegePlatte(0, "A", "C")
 
 	//Output:
 	//A ==> C
 
 }
 
-func ExampleHanoi1(){
+func ExampleHanoi() {
 
-	Hanoi1("A","B","C")
+	Hanoi(5, "A", "B", "C")
 
 	//Output:
 	// A ==> C
