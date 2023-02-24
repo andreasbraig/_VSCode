@@ -1,41 +1,67 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
+
+type Row []string
+
+type board []Row
 
 func main() {
 
-	fmt.Println(ContainsSwitchedLetters("ABC", "BCA"))
+	EmptyChessBoard := board{{}, {}, {}, {}, {}, {}, {}, {}}
+
+	letterlist := []string{"A", "B", "C", "D", "E", "F", "G", "H"}
+
+	fmt.Println(EmptyChessBoard.NameChessBoard(letterlist))
 
 }
 
+func (Board board) NameChessBoard(letterlist []string) board {
 
+	for i := range letterlist {
 
-func ContainsSwitchedLetters(s1, s2 string) bool {
-	// TODO
+		for _, e := range letterlist {
 
-	if len(s1) != len(s2){
-		return false
-	}
+			field := e + fmt.Sprintf("%d", i+1)
 
-	for i := 0;i < len (s1)-1; i++ {
-		if s1[i]!= s2[i]{
-			if s2 == SwitchLetters(s1,i,i+1) {
-				return true
-			}
+			Board[i] = append(Board[i], field)
+
 		}
 
 	}
 
-	
+	return Board
 
-	return false
 }
 
-func SwitchLetters(s string, i, j int) string {
-	result := []rune(s)
-	// TODO
+func (row Row) String() string {
 
-	result[i], result[j] = result[j], result[i]
+	result := "|"
 
-	return string(result)
+	for _, element := range row {
+		result += fmt.Sprintf(" %s |", element)
+	}
+
+	return result
+
+}
+
+// Liefert eine Representation vom des Boards
+func (Board board) String() string {
+
+	width := len(Board[0])
+
+	divider := strings.Repeat("+----", width) + "+\n"
+
+	result := divider
+
+	for _, row := range Board {
+
+		result += fmt.Sprintf("%v\n", row)
+		result += divider
+	}
+	return result
 }
