@@ -11,5 +11,12 @@ BEWERTUNG:
 func MultFive(list []int) int {
 	result := 1
 	// TODO
+
+	for i,e := range list {
+		if i%5 == 0 {
+			result *= e
+		}
+	}
+
 	return result
 }

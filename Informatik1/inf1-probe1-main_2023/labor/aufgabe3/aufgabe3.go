@@ -13,5 +13,18 @@ BEWERTUNG:
 // Ende gehängt werden.
 func Zip(s1, s2 string) string {
 	// TODO
-	return ""
+
+	if len(s1) == 0 && len(s2) == 0 {
+		return ""
+	}
+
+	if len(s1) == 0 {
+		return string(s2)
+	}
+
+	if len(s2) == 0 {
+		return string(s1)
+	}
+
+	return string(s1[0]) + string(s2[0]) + Zip(s1[1:], s2[1:])
 }

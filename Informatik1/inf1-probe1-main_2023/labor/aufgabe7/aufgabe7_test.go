@@ -9,5 +9,5 @@ func ExampleIntersect() {
 	fmt.Println(Intersect(l1, l2))
 
 	// Output:
-	// [1,7,13]
+	// [1 7 13]
 }

@@ -11,5 +11,17 @@ BEWERTUNG:
 func ArraySums(l []int) []int {
 	result := []int{}
 	// TODO
-	return result
+
+	// result an stelle 0 ist List an stelle 0 
+		result = append(result, 0 )
+	// result an stelle 1 ist List an stelle 1 plus Result an stelle 0
+
+	for i,e := range l {
+		result = append(result, result[i]+e)
+	}
+
+	// result an stelle 2 ist List an stelle 2 plus Resutl an stelle 1
+
+
+	return result[1:]
 }

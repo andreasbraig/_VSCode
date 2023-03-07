@@ -20,5 +20,27 @@ type Connection struct {
 // Sie prüft, ob die gegebene Verbindung conn zeitlich vollständig vor next liegt.
 func (conn Connection) IsBefore(next Connection) bool {
 	// TODO
+
+	//Arrival von conn muss vor Departure von next Conn Liegen
+	// -> next  Departure Hour muss vor conn Arrival Hour liegen
+
+	if next.DepartureHour > conn.ArrivalHour {
+
+		return true
+
+	} else if next.DepartureHour == conn.ArrivalHour {
+		
+		// Wenn beide gleich sind wird Departure Minute mit Arrival Minute verglichen.
+		
+		if next.DepartureMinute > conn.ArrivalMinute {
+
+			return true
+
+		} else if next.DepartureMinute == next.ArrivalMinute {
+			return false
+		}
+	}
+
 	return false
+
 }
