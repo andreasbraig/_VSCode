@@ -11,32 +11,32 @@ BEWERTUNG:
 // Liefert den leeren String, falls es kein solches Element gibt.
 func LongestAbc(list []string) string {
 
-// TODO
+	// TODO
 
 	filter := []string{}
 
-// Eine Liste mit allen die mit abc beginnen erstellen
+	// Eine Liste mit allen die mit abc beginnen erstellen
 
 	for _, e := range list {
 
 		if len(e) >= 3 {
 
 			if string(e[0:3]) == "abc" {
-			filter = append(filter, e)
+				filter = append(filter, e)
 			}
 
-	}
+		}
 
 	}
 
-// längen vergleichen und elemente löschen.
+	// längen vergleichen und elemente löschen.
 
-//Den Fall der leeren Liste abfangen
+	//Den Fall der leeren Liste abfangen
 	if len(filter) == 0 {
 		return ""
 	}
 
-// den längsten string ermitteln
+	// den längsten string ermitteln
 	max := 0
 	result := ""
 
@@ -44,10 +44,10 @@ func LongestAbc(list []string) string {
 
 		if len(e) > max {
 			max = len(e)
-			result = string(e)
-			}
+			result = e
+		}
 
-}
+	}
 
 	return result
 

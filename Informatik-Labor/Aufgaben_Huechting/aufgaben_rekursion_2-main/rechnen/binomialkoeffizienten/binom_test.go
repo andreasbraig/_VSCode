@@ -13,6 +13,8 @@ func ExampleBinomialCoefficient() {
 		fmt.Println()
 	}
 
+	fmt.Println(BinomialCoefficient(4,3))
+
 	// Output:
 	// n == 0: 1
 	// n == 1: 1 1
