@@ -3,8 +3,8 @@ package dllist_int
 import "testing"
 
 func TestDLLNode_Insert_nextpointers(t *testing.T) {
-	e := NewDLLNode()
-	last := e.Insert(1)
+	e := NewDLLNode() // e
+	last := e.Insert(1) // e -> 1
 	e.Insert(3)
 	e.Insert(2)
 	last.Insert(38)

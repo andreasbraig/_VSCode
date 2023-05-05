@@ -23,17 +23,18 @@ Fügen Sie auch entsprechende Tests hinzu, um die Funktionalität zu überprüfe
 
 **Beispiele für `DLList`:**
 
-* `Remove` erwartet einen Index und entfernt dieses Element aus der Liste, falls es existiert.
-* `Insert` erwartet einen Index und einen Wert und fügt ein neues Element an dieser Position ein.
+* `Remove` erwartet einen Index und entfernt dieses Element aus der Liste, falls es existiert. √
+* `Insert` erwartet einen Index und einen Wert und fügt ein neues Element an dieser Position ein.√
 * `InsertSorted` erwartet einen Wert und fügt ein neues Element an der richtigen Position ein.
 * `Reverse` dreht die Reihenfolge der Elemente in der Liste um.
-* `Replace` erwartet einen Index und einen Wert und ersetzt den Wert des Elements an dieser Position.
+* `Replace` erwartet einen Index und einen Wert und ersetzt den Wert des Elements an dieser Position. √
 
 **Beispiele für `DLNode`:**
 
-* `Find` erwartet einen Wert und liefert den entsprechenden Element-Pointer, falls solch ein Element existiert.
+* `Find` erwartet einen Wert und liefert den entsprechenden Element-Pointer, falls solch ein Element existiert. √
 * `FindLast` erwartet einen Wert und liefert den Pointer auf das letzte Element mit diesem Wert.
 * `FindAll` erwartet einen Wert und liefert eine Liste mit allen Elementen mit diesem Wert.
+* `FindIndex` erwartet einen Wert und liefert den Index des ersten Elements mit diesem Wert. √
 
 ## Erstellung einer Liste für einen komplexeren Datentyp
 

@@ -54,4 +54,61 @@ func swapNodes(e1, e2 *DLLNode) {
 	// Geben Sie jeweils dem Vorgänger und Nachfolger von e1 und e2 einen Namen
 	// in Form einer eigenen Variable. Dadurch behalten Sie leichter den Überblick,
 	// welcher Pointer wohin zeigen muss.
+
+	// Den Elementen wird der Wert von e1.Prev und e1.Next zugewiesen um sie Sppäter erneut zu vergeben
+	A := e1.Prev
+	B := e1.Next
+
+	C := e2.Prev
+	D := e2.Next
+
+	// Neuzuweisung der elemente
+	A.Next = e2
+	e2.Prev = A
+	e2.Next = B
+	B.Prev = e2
+
+	C.Next = e1
+	e1.Prev = C
+	e1.Next = D
+	D.Prev = e1
+
+}
+
+func (l DLList) getpointer(index int) *DLLNode {
+
+	if index < 0 {
+		return nil
+	}
+
+	counter := 0
+	// TODO
+	//	Iterieren Sie über die liste und finden sie den Pointer des Elements mit dem gegebenen Index.
+	for crt := l.anchor.Next; crt != l.anchor; crt = crt.Next {
+		if counter == index {
+			return crt
+		}
+		counter++
+	}
+
+	return nil
+
+}
+
+// getindex returns the index of the first element with the given value.
+func (l DLList) getindex(value int) int {
+
+	counter := 0
+	// TODO
+	// Iterieren Sie über die Liste und vergleichen Sie den Wert jedes Elements mit dem gesuchten Wert.
+	for crt := l.anchor.Next; crt != l.anchor; crt = crt.Next {
+
+		if crt.Value == value {
+			return counter
+		}
+		counter++
+	}
+
+	return -1
+
 }
