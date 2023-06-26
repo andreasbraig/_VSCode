@@ -16,4 +16,25 @@ package aufgabe3
 // Verringert den kleinsten Wert im Baum um 1.
 func (tree *BinTree) DecreaseSmallest() {
 	// TODO
+
+	el := tree.FindSmallest()
+
+	if el != nil {
+		el.Value -= 1
+	}
+
+}
+
+func (tree *BinTree) FindSmallest() *BinTree {
+
+	if tree.Empty() {
+		return nil
+	}
+
+	if tree.Left.Empty() {
+		return tree
+	}
+
+	return tree.Left.FindSmallest()
+
 }

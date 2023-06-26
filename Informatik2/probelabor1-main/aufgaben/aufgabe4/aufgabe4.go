@@ -14,5 +14,17 @@ package aufgabe4
 // Verringert den kleinsten Wert im Baum um 1.
 func (tree *BinTree) HasOddElementNumber() bool {
 	// TODO
-	return false
+
+	return (tree.CountElements() % 2) == 1
+}
+
+
+//Rekursive Funktion um die Elemente in einem Binären Suchbaum zu zählen 
+func (tree *BinTree) CountElements() int {
+	if tree.Empty(){
+		return 0 
+	}
+
+	return tree.Left.CountElements() + tree.Right.CountElements() + 1
+
 }

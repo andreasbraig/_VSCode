@@ -1,0 +1,9 @@
+= Tries
+
+Ein *Trie* (oder *Präfixbaum*) ist eine Datenstruktur, mit der sich Strings speichern
+lassen, um effizient darin zu suchen. Jeder Knoten des Baums speichert ein Zeichen, 
+so dass man beim Verarbeiten eines Strings in den Baum absteigt.
+An jedem Knoten können dabei Meta-Informationen gespeichert werden,
+die beim Verarbeiten genutzt werden.
+
+include::doc/examples.adoc[leveloffset=1]

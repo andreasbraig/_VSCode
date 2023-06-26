@@ -17,5 +17,13 @@ package aufgabe2
 // oder die Länge, falls s nicht vorkommt.
 func (list *LinkedList) Find(s string) int {
 	// TODO
-	return 0
+
+	if list == nil {
+		return -1
+	}
+	if list.Id == s {
+		return 0 
+	}
+	return 1 + list.Next.Find(s)
+
 }
