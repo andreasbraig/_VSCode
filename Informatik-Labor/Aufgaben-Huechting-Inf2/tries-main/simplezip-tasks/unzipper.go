@@ -99,20 +99,20 @@ func (uz *Unzipper) CopyChars(n int) {
 func (uz *Unzipper) Run() {
 	// TODO
 
-	//Solange der Unzipper nicht fertig ist 
+	//Solange der Unzipper nicht fertig ist
 	for !uz.Done() {
-		//Berechne wie viele Buchstaben der Walker in den Baum gelaufen ist 
+		//Berechne wie viele Buchstaben der Walker in den Baum läuft
 		consumed := uz.tw.Walk(uz.compressed[uz.position:])
 
 		//Wenn er nicht gelaufen ist, kopiere den einen buchstaben weiter an Result
 		if consumed == 0 {
 			uz.AdvanceSingleChar()
-			continue//und geh aus der if bedingung raus
-		} else if !uz.InsertCurrentData() { //führt Insert Current Data aus und t 
+			continue //und geh aus der if bedingung raus
+		} else if !uz.InsertCurrentData() { //führt Insert Current Data in einem If aus
 			uz.CopyChars(consumed) //wenn es fehlschlägt werden alle gelaufenen buchstaben angehäng
 		}
-		uz.tw.Reset() //Der Walker wird zurückgesetzt, dass current=trie
-		uz.position += consumed // Die Position wird um die gelaufenen Buchstaben erhöht 
+		uz.tw.Reset()           //Der Walker wird zurückgesetzt, dass current=trie
+		uz.position += consumed // Die Position wird um die gelaufenen Buchstaben erhöht
 
 	}
 
