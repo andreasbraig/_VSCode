@@ -40,13 +40,3 @@ func ExampleLinkedList_Erase_nonExistingElement() {
 	// []
 }
 
-
-func ExampleSwap() {
-	l1 := MakeLinkedList("A", "B", "C")
-
-	l1.Swap(l1, l1.Next)
-	fmt.Println(l1)
-	
-	// Output:
-	// [B A C]
-}

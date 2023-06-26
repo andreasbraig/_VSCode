@@ -11,18 +11,16 @@ package aufgabe4
  * Die Methode soll true liefern, falls der Baum eine ungerade Anzahl an Elementen hat.
  */
 
-// Verringert den kleinsten Wert im Baum um 1.
 func (tree *BinTree) HasOddElementNumber() bool {
 	// TODO
 
 	return (tree.CountElements() % 2) == 1
 }
 
-
-//Rekursive Funktion um die Elemente in einem Binären Suchbaum zu zählen 
+// Rekursive Funktion um die Elemente in einem Binären Suchbaum zu zählen
 func (tree *BinTree) CountElements() int {
-	if tree.Empty(){
-		return 0 
+	if tree.Empty() {
+		return 0
 	}
 
 	return tree.Left.CountElements() + tree.Right.CountElements() + 1

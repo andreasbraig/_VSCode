@@ -19,8 +19,8 @@ func (list *LinkedList) Erase(pos int) {
 		return
 	}
 	if pos == 0 {
-		list = list.Next
-		return
+		SwapValues(list,list.Next)
+		list.Erase(1)
 	}
 	if pos == 1 {
 		list.Next = list.Next.Next
@@ -33,5 +33,5 @@ func (list *LinkedList) Erase(pos int) {
 
 func SwapValues(e1, e2 *LinkedList) {
 
-	e2.Value, e1.Value = e1.Value, e2.Value
+	e2.Id, e1.Id = e1.Id, e2.Id
 }
