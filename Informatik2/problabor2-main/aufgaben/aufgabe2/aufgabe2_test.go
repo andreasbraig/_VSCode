@@ -2,7 +2,7 @@ package aufgabe2
 
 import "fmt"
 
-func ExampleLinkedList_RecReverse_nonEmptyList() {
+func ExampleLinkedList_Reverse_nonEmptyList() {
 	l1 := MakeLinkedList("A", "B", "C", "D")
 
 	fmt.Println(l1.Reverse())

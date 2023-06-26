@@ -20,24 +20,47 @@ package aufgabe2
 
 // Dreht die Liste um und liefert den neuen Kopf.
 func (list *LinkedList) Reverse() *LinkedList {
-	// Wenn die Liste leer oder nur aus einem Element besteht,
-	// ist die umgekehrte Liste identisch zur ursprünglichen Liste
-	pos := list.Next // Ins ist der Einfügepunkt ab dem sich alles neu aufbaut
+
+	//Rekursionsanker, die leere Liste oder die Liste mit nur einem element muss nicht gedreht werden. 
 	if list.Empty() {
-		return MakeLinkedList()
-	}
-	if list.Next.Empty() {
 		return list
 	}
-
-	tail := list.Next.Next
-
-	if !tail.Empty() {
-		pos = pos.Reverse()
+	if list.Next.Empty(){
+		return list 
 	}
 
-	list.Next.Next = list // Die Rekursive liste wieder an die Invertierte anhängen
-	list.Next = MakeLinkedList()
+	//Warum 2 Rekursionsanker? 
+	//Weil wir unten im Rekursionsschritt die Liste zerlegen und der hinter Teil dann noch
+	//länge >= 1 haben muss, damit alles funktioniert. 
 
-	return pos
+	//Die beiden ersten Elemente werden gemerkt
+	A := list
+	B := list.Next
+
+	//Alles ab B Invertieren
+	invTail := B.Reverse()
+
+	// A zwischen B und das Ende hängen.
+	// Das geht weil wir wissen, dass B jetzt das letzte element der invertierten ist und invTail das erste.
+	A.Next = B.Next
+	B.Next = A
+
+	return invTail
+
+}
+
+func (list *LinkedList) ITReverse() *LinkedList {
+
+	var prev *LinkedList
+	current := list
+
+	for current != nil {
+		next := current.Next
+		current.Next = prev
+		prev = current
+		current = next
+	}
+
+	return prev
+
 }
