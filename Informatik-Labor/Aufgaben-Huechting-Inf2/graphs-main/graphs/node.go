@@ -25,14 +25,22 @@ func (n *Node) NeighbourCount() int {
 // GetNeighbour returns the neighbour with the given label.
 // If no neighbour with the given label exists, nil is returned.
 func (n *Node) GetNeighbour(label string) *Node {
-	// TODO
+
+	for _, el := range n.neighbours {
+		if el.Label == label {
+			return el
+		}
+	}
+
 	return nil
+
 }
 
 // AddNeighbour adds a neighbour with a label to a node.
 // If a Neighbour with the same label already exists, it is not added.
 func (n *Node) AddNeighbour(label string) {
 	// TODO
+
 }
 
 // AddNeighbourNode adds node m as a neighbour.
@@ -40,12 +48,31 @@ func (n *Node) AddNeighbour(label string) {
 // If m is nil, it is not added.
 func (n *Node) AddNeighbourNode(m *Node) {
 	// TODO
+	if n.GetNeighbour(m.Label) != nil {
+		return
+	} else if m == nil {
+		return
+	}
+
+	n.neighbours = append(n.neighbours, m)
+
+}
+
+func (n *Node) GetAllNeighbours() []*Node {
+	return n.neighbours
 }
 
 // NeighboursMaxDistance returns all neighbours of a node with a distance of at most maxDistance.
 func (n *Node) NeighboursMaxDistance(maxDistance int) []*Node {
 	result := []*Node{}
 	// TODO
+	if maxDistance == 0 {
+		return result
+	}
+	for _, e := range n.neighbours {
+		result = append(result, e)
+		result = append(result, e.NeighboursMaxDistance(maxDistance-1)...)
+	}
 
 	return result
 }
