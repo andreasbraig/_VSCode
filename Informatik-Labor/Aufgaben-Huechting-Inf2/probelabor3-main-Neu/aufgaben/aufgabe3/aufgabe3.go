@@ -31,10 +31,10 @@ func (tree *BinTree) GetValue(path string) int {
 	head, tail := string(path[0]), path[1:]
 
 	if head == "r"{
-		tree.Right.GetValue(tail)
+		return tree.Right.GetValue(tail)
 	}
 	if head == "l" {
-		tree.Left.GetValue(tail)
+		return tree.Left.GetValue(tail)
 	}
 	return 0 
 

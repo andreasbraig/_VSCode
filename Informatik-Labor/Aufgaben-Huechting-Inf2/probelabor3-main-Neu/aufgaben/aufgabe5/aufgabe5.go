@@ -23,4 +23,70 @@ package aufgabe5
 // Ersetzt oldstring durch newString in der Liste.
 func (list BucketList) Replace(oldString, newString string) {
 	// TODO
+
+	if oldString[0] == newString[0] {
+		for _, bucket := range list {
+			for i, e := range bucket {
+				if e == oldString {
+					bucket[i] = newString
+				}
+			}
+		}
+	} else {
+		list.Add(newString)
+		for bi, bucket := range list {
+			for i, e := range bucket {
+				if e == oldString {
+
+					RemoveFromBucket(&list[bi], i)
+
+				}
+			}
+		}
+
+	}
+
 }
+
+func FindPosInBucket(bucket []string, oldstring string) int {
+	for i, e := range bucket {
+		if e == oldstring {
+			return i
+		}
+	}
+	return -1
+}
+
+func RemoveFromBucket(list *[]string, index int) {
+
+	if len(*list) <= 1 || index < 0 {
+		return
+	}
+	if len(*list) > 2 {
+		copyofList := *list
+		result := copyofList[:index]
+		result = append(result, copyofList[index+1:]...)
+
+		*list = result
+	}
+
+	if len(*list) == 2 {
+		if index == 0 {
+			copyofList := *list
+			result := []string{}
+			result = append(result, copyofList[1])
+
+			*list = result
+		}
+		if index == 1 {
+			copyofList := *list
+			result := []string{}
+			result = append(result, copyofList[0])
+
+			*list = result
+		}
+	}
+
+}
+
+func (list *BucketList) RemoveBucket(bindex int)

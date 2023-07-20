@@ -73,3 +73,26 @@ func ExampleBucketList_Replace_lastOfBucketDifferentBucket_original() {
 	// h: [Hallo]
 	// s: [Skateboard]
 }
+
+func ExampleRemoveElement() {
+	l1 := []string{"A", "B", "C", "D", "E"}
+	l2 := []string{"A", "B", "C", "D", "E"}
+	l3 := []string{"A", "B", "C", "D", "E"}
+	l4 := []string{"A", "B", "C", "D", "E"}
+
+	RemoveFromBucket(&l1, 2)
+	RemoveFromBucket(&l2, 0)
+	RemoveFromBucket(&l3, 1)
+	RemoveFromBucket(&l4, 4)
+
+	fmt.Println(l1)
+	fmt.Println(l2)
+	fmt.Println(l3)
+	fmt.Println(l4)
+
+	// Output:
+	//[A B D E]
+	//[B C D E]
+	//[A C D E]
+	//[A B C D]
+}
